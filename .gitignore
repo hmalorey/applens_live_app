@@ -3,3 +3,7 @@ venv/
 .venv/
 .claude/
 .env
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
