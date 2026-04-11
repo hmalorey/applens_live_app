@@ -10,6 +10,14 @@ AppLens is a web app that pulls reviews from the App Store and Play Store across
 
 Built as the live follow-up to the [exploration notebook](https://github.com/hmalorey/app_reviews_analyzer).
 
+
+<img width="876" height="777" alt="Capture d’écran 2026-04-10 à 22 35 11" src="https://github.com/user-attachments/assets/df0d7251-919a-485a-a864-57f941f0c343" />
+<img width="1500" height="787" alt="Capture d’écran 2026-04-10 à 22 44 38" src="https://github.com/user-attachments/assets/4286539b-3d20-4bae-bbce-e7283a37c22e" />
+<img width="1490" height="784" alt="Capture d’écran 2026-04-10 à 22 44 45" src="https://github.com/user-attachments/assets/57a104b7-c18b-46e8-ba6e-fecda8bff917" />
+<img width="1057" height="582" alt="Capture d’écran 2026-04-10 à 22 45 31" src="https://github.com/user-attachments/assets/57b69a30-f241-4af0-b5aa-5ed1d6dcf296" />
+<img width="1076" height="738" alt="Capture d’écran 2026-04-10 à 22 45 49" src="https://github.com/user-attachments/assets/b8f8923c-3d2d-4993-ae63-3fa18906f4d7" />
+
+
 ## How it works
 
 1. Select an app and markets in the UI
