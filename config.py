@@ -49,7 +49,7 @@ MARKET_NAME_TO_CODE = {
 KNOWN_APPS = {
     "airbnb":   {"app_store_id": "401626263",   "play_store_id": "com.airbnb.android"},
     "linear":   {"app_store_id": "1645587184",  "play_store_id": "app.linear"},
-    "revolut":  {"app_store_id": "932493386",   "play_store_id": "com.revolut.revolut"},
+    "revolut":  {"app_store_id": "932493382",   "play_store_id": "com.revolut.revolut"},
     "coinbase": {"app_store_id": "886427730",   "play_store_id": "com.coinbase.android"},
     "bitstack": {"app_store_id": "1608783388",  "play_store_id": "com.bitstack.app"},
     "alan":     {"app_store_id": "1277025964",  "play_store_id": "com.alanmobile"},
