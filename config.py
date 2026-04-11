@@ -52,6 +52,7 @@ KNOWN_APPS = {
     "revolut":  {"app_store_id": "932493386",   "play_store_id": "com.revolut.revolut"},
     "coinbase": {"app_store_id": "886427730",   "play_store_id": "com.coinbase.android"},
     "bitstack": {"app_store_id": "1608783388",  "play_store_id": "com.bitstack.app"},
+    "alan":     {"app_store_id": "1277025964",  "play_store_id": "com.alanmobile"},
 }
 
 
