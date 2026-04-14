@@ -21,11 +21,16 @@ def add_cors(response):
     return response
 
 
-# ── Serve the HTML ────────────────────────────────────────────────
+# ── Serve static files ───────────────────────────────────────────
 @app.route("/")
 def index():
     with open(os.path.join(HERE, "applens.html")) as f:
         return f.read(), 200, {"Content-Type": "text/html"}
+
+@app.route("/favicon.svg")
+def favicon():
+    with open(os.path.join(HERE, "favicon.svg")) as f:
+        return f.read(), 200, {"Content-Type": "image/svg+xml"}
 
 
 # ── SSE helper ────────────────────────────────────────────────────
