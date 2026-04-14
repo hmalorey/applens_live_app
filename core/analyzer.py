@@ -92,7 +92,7 @@ def analyze(app_name: str, reviews: list[dict], days_back: int) -> dict:
 
     message = client.messages.create(
         model="claude-opus-4-6",
-        max_tokens=2048,
+        max_tokens=4096,
         thinking={"type": "adaptive"},
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt}],

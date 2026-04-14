@@ -25,7 +25,11 @@ def get_ratings(app_store_id: str, play_store_id: str, markets: list[dict], revi
     ios_alltime  = None
     play_alltime = None
 
-    for market in markets:
+    # All-time ratings are global — try selected markets first, then fallbacks
+    fallback_markets = [{"country": "us", "language": "en"}, {"country": "fr", "language": "fr"}]
+    markets_to_try = list(markets) + [m for m in fallback_markets if m not in markets]
+
+    for market in markets_to_try:
         country  = market["country"]
         language = market["language"]
 
@@ -35,14 +39,16 @@ def get_ratings(app_store_id: str, play_store_id: str, markets: list[dict], revi
                     f"https://itunes.apple.com/lookup?id={app_store_id}&country={country}",
                     timeout=5,
                 ).json().get("results", [{}])[0]
-                ios_alltime = round(lookup.get("averageUserRating") or 0, 1)
+                score = lookup.get("averageUserRating")
+                ios_alltime = round(score, 1) if score is not None else None
             except Exception:
                 pass
 
         if play_alltime is None:
             try:
-                data         = play_app(play_store_id, lang=language, country=country)
-                play_alltime = round(data.get("score") or 0, 1)
+                data  = play_app(play_store_id, lang=language, country=country)
+                score = data.get("score")
+                play_alltime = round(score, 1) if score else None
             except Exception:
                 pass
 
@@ -55,6 +61,10 @@ def get_ratings(app_store_id: str, play_store_id: str, markets: list[dict], revi
 
     ios_90d  = round(df_ios["rating"].mean(),  1) if len(df_ios)  > 0 else None
     play_90d = round(df_play["rating"].mean(), 1) if len(df_play) > 0 else None
+
+    # Fall back to scraped average if store API returned nothing valid
+    if ios_alltime  is None: ios_alltime  = ios_90d
+    if play_alltime is None: play_alltime = play_90d
 
     # ── Rating distributions (percentage per star, 1–5) ──────────
     def distribution(df_store: pd.DataFrame) -> dict:

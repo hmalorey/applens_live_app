@@ -184,6 +184,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
     }
     .topnav-logo-icon {
       width: 26px; height: 26px;
@@ -333,7 +334,7 @@
     .text-input::placeholder { color: var(--dim); }
 
     .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .input-hint { font-size: 11px; color: var(--dim); margin-top: 5px; }
+    .input-hint { font-size: 11px; color: #999; margin-top: 5px; }
 
     .id-display-row {
       display: grid;
@@ -394,7 +395,7 @@
     .run-summary-text strong { color: var(--text); }
     .run-days {
       font-size: 11px;
-      color: var(--dim);
+      color: #999;
       background: var(--surface-2);
       border: 1px solid var(--border);
       padding: 2px 10px;
@@ -982,7 +983,7 @@
   <div class="hero-stats">
     <div class="hero-stat">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h4M6 4v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      14 markets
+      5 markets
     </div>
     <div class="hero-stat">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 9l2-4 2 2 2-5 2 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1023,6 +1024,7 @@
       <div class="mode-panel on" id="panel-list">
         <div class="field-label" style="margin-top:14px; margin-bottom:8px;">Select App</div>
         <select class="app-select-native" id="app-select" onchange="syncIds(); updateSummary();">
+          <option value="revenuecat" selected>RevenueCat</option>
           <option value="airbnb">Airbnb</option>
           <option value="linear">Linear</option>
           <option value="revolut">Revolut</option>
@@ -1032,11 +1034,11 @@
         </select>
         <div class="id-display-row">
           <div>
-            <input class="text-input" id="ios-id-display" value="401626263" readonly>
+            <input class="text-input" id="ios-id-display" value="6504531798" readonly>
             <div class="input-hint">App Store ID</div>
           </div>
           <div>
-            <input class="text-input" id="play-id-display" value="com.airbnb.android" readonly>
+            <input class="text-input" id="play-id-display" value="com.revenuecat.mobile" readonly>
             <div class="input-hint">Play Store ID</div>
           </div>
         </div>
@@ -1105,7 +1107,7 @@
 <div id="results" class="view">
   <div class="sticky-nav">
     <nav class="topnav">
-      <div class="topnav-logo">
+      <div class="topnav-logo" onclick="go('hero')">
         <div class="topnav-logo-icon">🔍</div>
         AppLens
       </div>
@@ -1127,7 +1129,7 @@
           <div class="app-store-badges">
             <span class="store-badge">🍎 App Store</span>
             <span class="store-badge">▶ Play Store</span>
-            <span class="store-badge">🇫🇷</span>
+            <span class="store-badge" id="r-markets">🇫🇷</span>
           </div>
         </div>
       </div>
@@ -1439,29 +1441,21 @@
 
   // ── App data ─────────────────────────────────────────────────
   const APP_IDS = {
-    airbnb:   { ios: '401626263',   play: 'com.airbnb.android',   icon: '✈️',  name: 'Airbnb'   },
-    linear:   { ios: '1645587184',  play: 'app.linear',           icon: '⚡',  name: 'Linear'   },
-    revolut:  { ios: '932493382',   play: 'com.revolut.revolut',  icon: '💳',  name: 'Revolut'  },
-    coinbase: { ios: '886427730',   play: 'com.coinbase.android', icon: '₿',   name: 'Coinbase' },
-    bitstack: { ios: '1608783388',  play: 'com.bitstack.app',     icon: '🔶',  name: 'Bitstack' },
-    alan:     { ios: '1277025964',  play: 'com.alanmobile',       icon: '🏥',  name: 'Alan'     },
+    revenuecat: { ios: '6504531798',  play: 'com.revenuecat.mobile', icon: '💰',  name: 'RevenueCat' },
+    airbnb:     { ios: '401626263',   play: 'com.airbnb.android',    icon: '✈️',  name: 'Airbnb'     },
+    linear:     { ios: '1645587184',  play: 'app.linear',            icon: '⚡',  name: 'Linear'     },
+    revolut:    { ios: '932493382',   play: 'com.revolut.revolut',   icon: '💳',  name: 'Revolut'    },
+    coinbase:   { ios: '886427730',   play: 'com.coinbase.android',  icon: '₿',   name: 'Coinbase'   },
+    bitstack:   { ios: '1608783388',  play: 'com.bitstack.app',      icon: '🔶',  name: 'Bitstack'   },
+    alan:       { ios: '1277025964',  play: 'com.alanmobile',        icon: '🏥',  name: 'Alan'       },
   };
 
   const MARKETS = [
+    { name: 'United States',   flag: '🇺🇸' },
     { name: 'France',          flag: '🇫🇷' },
     { name: 'Germany',         flag: '🇩🇪' },
-    { name: 'United Kingdom',  flag: '🇬🇧' },
     { name: 'Spain',           flag: '🇪🇸' },
     { name: 'Italy',           flag: '🇮🇹' },
-    { name: 'Netherlands',     flag: '🇳🇱' },
-    { name: 'Belgium',         flag: '🇧🇪' },
-    { name: 'Portugal',        flag: '🇵🇹' },
-    { name: 'Poland',          flag: '🇵🇱' },
-    { name: 'Sweden',          flag: '🇸🇪' },
-    { name: 'Denmark',         flag: '🇩🇰' },
-    { name: 'Finland',         flag: '🇫🇮' },
-    { name: 'Austria',         flag: '🇦🇹' },
-    { name: 'Switzerland',     flag: '🇨🇭' },
   ];
 
   // Live reviews data — populated by the API response
@@ -1491,7 +1485,7 @@
   }
 
   // ── Market chips ─────────────────────────────────────────────
-  const selectedMarkets = new Set(['France']);
+  const selectedMarkets = new Set(['United States', 'France']);
 
   function buildChips() {
     const wrap = document.getElementById('market-chips');
@@ -1653,6 +1647,9 @@
     // Header
     document.getElementById('r-name').textContent = data.app_name;
     document.getElementById('r-icon').textContent = appIcon;
+    document.getElementById('r-markets').textContent = (data.markets || [])
+      .map(name => (MARKETS.find(m => m.name === name) || {}).flag || '')
+      .filter(Boolean).join(' ');
 
     // All-time store pills
     document.querySelector('.store-pill:nth-child(1) .sp-val').innerHTML =

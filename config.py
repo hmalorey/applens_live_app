@@ -13,46 +13,29 @@ COLUMNS = ["date", "review", "rating", "source", "language", "country", "answere
 MARKETS_ALL = [
     {"country": "fr", "language": "fr"},  # France
     {"country": "de", "language": "de"},  # Germany
-    {"country": "gb", "language": "en"},  # United Kingdom
     {"country": "es", "language": "es"},  # Spain
     {"country": "it", "language": "it"},  # Italy
-    {"country": "nl", "language": "nl"},  # Netherlands
-    {"country": "be", "language": "fr"},  # Belgium
-    {"country": "pt", "language": "pt"},  # Portugal
-    {"country": "pl", "language": "pl"},  # Poland
-    {"country": "se", "language": "sv"},  # Sweden
-    {"country": "dk", "language": "da"},  # Denmark
-    {"country": "fi", "language": "fi"},  # Finland
-    {"country": "at", "language": "de"},  # Austria
-    {"country": "ch", "language": "fr"},  # Switzerland
+    {"country": "us", "language": "en"},  # United States
 ]
 
 # Human-readable name → country code mapping (for the HTML → API bridge)
 MARKET_NAME_TO_CODE = {
     "France":         "fr",
     "Germany":        "de",
-    "United Kingdom": "gb",
     "Spain":          "es",
     "Italy":          "it",
-    "Netherlands":    "nl",
-    "Belgium":        "be",
-    "Portugal":       "pt",
-    "Poland":         "pl",
-    "Sweden":         "se",
-    "Denmark":        "dk",
-    "Finland":        "fi",
-    "Austria":        "at",
-    "Switzerland":    "ch",
+    "United States":  "us",
 }
 
 # ── Known apps ────────────────────────────────────────────────
 KNOWN_APPS = {
-    "airbnb":   {"app_store_id": "401626263",   "play_store_id": "com.airbnb.android"},
-    "linear":   {"app_store_id": "1645587184",  "play_store_id": "app.linear"},
-    "revolut":  {"app_store_id": "932493382",   "play_store_id": "com.revolut.revolut"},
-    "coinbase": {"app_store_id": "886427730",   "play_store_id": "com.coinbase.android"},
-    "bitstack": {"app_store_id": "1608783388",  "play_store_id": "com.bitstack.app"},
-    "alan":     {"app_store_id": "1277025964",  "play_store_id": "com.alanmobile"},
+    "revenuecat": {"app_store_id": "6504531798",   "play_store_id": "com.revenuecat.mobile"},
+    "airbnb":     {"app_store_id": "401626263",    "play_store_id": "com.airbnb.android"},
+    "linear":     {"app_store_id": "1645587184",   "play_store_id": "app.linear"},
+    "revolut":    {"app_store_id": "932493382",    "play_store_id": "com.revolut.revolut"},
+    "coinbase":   {"app_store_id": "886427730",    "play_store_id": "com.coinbase.android"},
+    "bitstack":   {"app_store_id": "1608783388",   "play_store_id": "com.bitstack.app"},
+    "alan":       {"app_store_id": "1277025964",   "play_store_id": "com.alanmobile"},
 }
 
 
