@@ -159,12 +159,12 @@
       display: flex;
       gap: 32px;
       font-size: 11px;
-      color: var(--dim);
+      color: #999;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
     .hero-stat { display: flex; align-items: center; gap: 6px; }
-    .hero-stat svg { opacity: 0.4; }
+    .hero-stat svg { opacity: 0.6; }
 
     /* ══════════════════════════════════════════════════════════
        NAV
@@ -707,7 +707,7 @@
     .dn { color: var(--red); }
     .neutral { color: var(--muted); }
 
-    /* Rating distribution — combined */
+    /* Rating distribution : combined */
     .dist-combined {
       padding: 20px 22px;
       border: 1px solid var(--border);
@@ -775,7 +775,7 @@
       color: #EF4444;
     }
 
-    /* Problem cards — 2-col grid */
+    /* Problem cards : 2-col grid */
     .pcard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -971,10 +971,10 @@
   <div class="hero-inner">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      App Store · Play Store · 14 EU Markets
+      App Store · Play Store · 5 Markets
     </div>
     <h1 class="hero-title">App<em>Lens</em></h1>
-    <p class="hero-tagline">"Know what your users think —<br>and exactly how to improve your app."</p>
+    <p class="hero-tagline">Know what your users think<br>and exactly how to improve your app.</p>
     <p class="hero-sub">AI-powered. Pulls from App Store + Play Store.<br>Analyzes reviews across your key markets.</p>
     <button class="btn-cta" onclick="go('params')">
       Analyze an app
@@ -1000,7 +1000,7 @@
 <!-- ══ PARAMS ════════════════════════════════════════════════ -->
 <div id="params" class="view">
   <nav class="topnav">
-    <div class="topnav-logo">
+    <div class="topnav-logo" onclick="go('hero')">
       <div class="topnav-logo-icon">🔍</div>
       AppLens
     </div>
@@ -1270,7 +1270,7 @@
                 <div class="pcard-title">App crashes on login</div>
                 <div class="sev sev-c">Critical</div>
               </div>
-              <div class="pcard-desc">Users are unable to log in after the latest update — the app freezes or crashes on the login screen, making it completely unusable.</div>
+              <div class="pcard-desc">Users are unable to log in after the latest update : the app freezes or crashes on the login screen, making it completely unusable.</div>
             </div>
             <div class="pcard-footer">
               <div class="badge-count">
@@ -1300,7 +1300,7 @@
                 <div class="pcard-title">Poor customer support</div>
                 <div class="sev sev-h">High</div>
               </div>
-              <div class="pcard-desc">Support responses are described as generic, slow, and unhelpful — especially for billing issues and account access problems.</div>
+              <div class="pcard-desc">Support responses are described as generic, slow, and unhelpful : especially for billing issues and account access problems.</div>
             </div>
             <div class="pcard-footer">
               <div class="badge-count">
@@ -1459,7 +1459,7 @@
     { name: 'Italy',           flag: '🇮🇹' },
   ];
 
-  // Live reviews data — populated by the API response
+  // Live reviews data : populated by the API response
   let liveReviews = [];
 
   // ── Navigation ───────────────────────────────────────────────
@@ -1570,7 +1570,7 @@
     currentStep++;
   }
 
-  // ── Run analysis — real SSE stream ───────────────────────────
+  // ── Run analysis : real SSE stream ───────────────────────────
   function runAnalysis() {
     const isCustom = document.getElementById('tab-custom').classList.contains('on');
     let appName, appStoreId, playStoreId, appIcon;
@@ -1654,23 +1654,23 @@
 
     // All-time store pills
     document.querySelector('.store-pill:nth-child(1) .sp-val').innerHTML =
-      `<span class="star">★</span> ${data.ios_alltime ?? '—'}`;
+      `<span class="star">★</span> ${data.ios_alltime ?? ':'}`;
     document.querySelector('.store-pill:nth-child(2) .sp-val').innerHTML =
-      `<span class="star">★</span> ${data.play_alltime ?? '—'}`;
+      `<span class="star">★</span> ${data.play_alltime ?? ':'}`;
 
     // 90d metric cards
     const iosD  = data.ios_90d  && data.ios_alltime  ? (data.ios_90d  - data.ios_alltime).toFixed(1)  : null;
     const playD = data.play_90d && data.play_alltime ? (data.play_90d - data.play_alltime).toFixed(1) : null;
 
     document.querySelectorAll('.mc')[0].querySelector('.mc-val').innerHTML =
-      `<span class="star">★</span> ${data.ios_90d ?? '—'}`;
+      `<span class="star">★</span> ${data.ios_90d ?? ':'}`;
     document.querySelectorAll('.mc')[0].querySelector('.mc-delta').innerHTML =
       iosD ? `${iosD > 0 ? '▲' : '▼'} ${Math.abs(iosD)} vs all time` : '';
     document.querySelectorAll('.mc')[0].querySelector('.mc-delta').className =
       'mc-delta ' + (iosD >= 0 ? 'up' : 'dn');
 
     document.querySelectorAll('.mc')[1].querySelector('.mc-val').innerHTML =
-      `<span class="star">★</span> ${data.play_90d ?? '—'}`;
+      `<span class="star">★</span> ${data.play_90d ?? ':'}`;
     document.querySelectorAll('.mc')[1].querySelector('.mc-delta').innerHTML =
       playD ? `${playD > 0 ? '▲' : '▼'} ${Math.abs(playD)} vs all time` : '';
     document.querySelectorAll('.mc')[1].querySelector('.mc-delta').className =
