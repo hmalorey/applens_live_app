@@ -1025,21 +1025,20 @@
       <div class="mode-panel on" id="panel-list">
         <div class="field-label" style="margin-top:14px; margin-bottom:8px;">Select App</div>
         <select class="app-select-native" id="app-select" onchange="syncIds(); updateSummary();">
-          <option value="revenuecat" selected>RevenueCat</option>
-          <option value="airbnb">Airbnb</option>
+          <option value="airbnb" selected>Airbnb</option>
           <option value="linear">Linear</option>
           <option value="revolut">Revolut</option>
           <option value="coinbase">Coinbase</option>
-          <option value="bitstack">Bitstack</option>
           <option value="alan">Alan</option>
+          <option value="qonto">Qonto</option>
         </select>
         <div class="id-display-row">
           <div>
-            <input class="text-input" id="ios-id-display" value="6504531798" readonly>
+            <input class="text-input" id="ios-id-display" value="401626263" readonly>
             <div class="input-hint">App Store ID</div>
           </div>
           <div>
-            <input class="text-input" id="play-id-display" value="com.revenuecat.mobile" readonly>
+            <input class="text-input" id="play-id-display" value="com.airbnb.android" readonly>
             <div class="input-hint">Play Store ID</div>
           </div>
         </div>
@@ -1442,13 +1441,12 @@
 
   // ── App data ─────────────────────────────────────────────────
   const APP_IDS = {
-    revenuecat: { ios: '6504531798',  play: 'com.revenuecat.mobile', icon: '💰',  name: 'RevenueCat' },
     airbnb:     { ios: '401626263',   play: 'com.airbnb.android',    icon: '✈️',  name: 'Airbnb'     },
     linear:     { ios: '1645587184',  play: 'app.linear',            icon: '⚡',  name: 'Linear'     },
     revolut:    { ios: '932493382',   play: 'com.revolut.revolut',   icon: '💳',  name: 'Revolut'    },
     coinbase:   { ios: '886427730',   play: 'com.coinbase.android',  icon: '₿',   name: 'Coinbase'   },
-    bitstack:   { ios: '1608783388',  play: 'com.bitstack.app',      icon: '🔶',  name: 'Bitstack'   },
     alan:       { ios: '1277025964',  play: 'com.alanmobile',        icon: '🏥',  name: 'Alan'       },
+    qonto:      { ios: '1214811644',  play: 'eu.qonto.qonto',        icon: '🏦',  name: 'Qonto'      },
   };
 
   const MARKETS = [
