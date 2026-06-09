@@ -36,6 +36,7 @@ KNOWN_APPS = {
     "coinbase":   {"app_store_id": "886427730",    "play_store_id": "com.coinbase.android"},
     "bitstack":   {"app_store_id": "1608783388",   "play_store_id": "com.bitstack.app"},
     "alan":       {"app_store_id": "1277025964",   "play_store_id": "com.alanmobile"},
+    "qonto":      {"app_store_id": "1214811644",   "play_store_id": "eu.qonto.qonto"},
 }
 
 
